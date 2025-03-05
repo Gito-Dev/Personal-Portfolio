@@ -1,9 +1,10 @@
 import React from "react";
+import NavBar from "./Components/NavBar";
 
 function App() {
   return (
     <>
-      <p className="text-red-600">hello</p>
+      <NavBar />
     </>
   );
 }
