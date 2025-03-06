@@ -13,6 +13,9 @@ export default function NavBar() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
+
+
+      {/* Desktop menu */}
       <nav
         className="flex items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -78,6 +81,10 @@ export default function NavBar() {
           </a>
         </div>
       </nav>
+
+
+
+
       {/* Mobile menu, show/hide based on menu open state. */}
       {isMobileMenuOpen && (
         <div className="lg:hidden" role="dialog" aria-modal="true">
