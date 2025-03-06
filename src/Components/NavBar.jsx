@@ -13,8 +13,6 @@ export default function NavBar() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-
-
       {/* Desktop menu */}
       <nav
         className="flex items-center justify-between p-6 lg:px-8"
@@ -54,19 +52,19 @@ export default function NavBar() {
             href="#about"
             className="text-sm font-semibold leading-6 text-white"
           >
-            About us
+            About Me
           </a>
           <a
             href="#location"
             className="text-sm font-semibold leading-6 text-white"
           >
-            Locations
+            Skills & Services
           </a>
           <a
             href="#contact"
             className="text-sm font-semibold leading-6 text-white"
           >
-            Contact us
+            Projects
           </a>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -74,7 +72,7 @@ export default function NavBar() {
             href="#contact"
             className="text-sm font-semibold leading-6 text-white"
           >
-            Book Now
+            Contact
             <span className="pl-2" aria-hidden="true">
               &rarr;
             </span>
@@ -82,14 +80,11 @@ export default function NavBar() {
         </div>
       </nav>
 
-
-
-
       {/* Mobile menu, show/hide based on menu open state. */}
       {isMobileMenuOpen && (
         <div className="lg:hidden" role="dialog" aria-modal="true">
           <div className="fixed inset-0 z-50" onClick={toggleMobileMenu}></div>
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[#111827] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[#101010] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <a href="#about" className="-m-1.5 p-1.5">
                 <span className="sr-only">Amici</span>
@@ -125,21 +120,21 @@ export default function NavBar() {
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50 hover:text-gray-500"
                     onClick={closeMobileMenu}
                   >
-                    About Us
+                    About Me
                   </a>
                   <a
                     href="#location"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50 hover:text-gray-500"
                     onClick={closeMobileMenu}
                   >
-                    Locations
+                    Skills & Services
                   </a>
                   <a
                     href="#contact"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50 hover:text-gray-500"
                     onClick={closeMobileMenu}
                   >
-                    Contact Us
+                    Projects
                   </a>
                 </div>
                 <div className="py-6">
@@ -148,7 +143,7 @@ export default function NavBar() {
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-50 hover:text-gray-500"
                     onClick={closeMobileMenu}
                   >
-                    Book Now
+                    Contact
                   </a>
                 </div>
               </div>
