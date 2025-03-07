@@ -1,23 +1,14 @@
 import React from "react";
 import pfp from "../assets/pfp.png";
 import { FaGithub, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
+import Navbar from "./Navbar";
 
 export default function MobileHome() {
   return (
     <div className="min-h-screen p-4 space-y-6">
       {/* Profile Header */}
-      <div className="flex items-center gap-4">
-        <button
-          className="w-16 h-16 rounded-full bg-[#e84644] hover:bg-[#e84644]/90 transition-all duration-300 flex items-center justify-center shadow-lg"
-          style={{
-            backgroundImage: `url(${pfp})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        ></button>
-        <h1 className="text-2xl font-semibold tracking-tight bg-gradient-to-r from-[#e84644] via-[#ff6b6b] to-[#ff8585] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(232,70,68,0.75)]">
-          Gito Dev
-        </h1>
+      <div className="pb-10">
+        <Navbar />
       </div>
 
       {/* Profile Info Section */}
@@ -76,7 +67,7 @@ export default function MobileHome() {
           </div>
           <div className="flex items-center gap-6">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Gito-Dev"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
@@ -84,7 +75,7 @@ export default function MobileHome() {
               <FaGithub size={24} />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/horgito-m-41b047289/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
@@ -92,7 +83,7 @@ export default function MobileHome() {
               <FaLinkedin size={24} />
             </a>
             <a
-              href="https://instagram.com/yourusername"
+              href="https://www.instagram.com/gito.dev/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
@@ -100,7 +91,7 @@ export default function MobileHome() {
               <FaInstagram size={24} />
             </a>
             <a
-              href="https://tiktok.com/@yourusername"
+              href="https://www.tiktok.com/@gito.dev"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"

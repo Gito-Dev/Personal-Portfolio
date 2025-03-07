@@ -112,7 +112,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-4">
                   <a
-                    href="https://github.com/yourusername"
+                    href="https://github.com/Gito-Dev"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
@@ -120,7 +120,7 @@ export default function Home() {
                     <FaGithub size={20} />
                   </a>
                   <a
-                    href="https://linkedin.com/in/yourusername"
+                    href="https://www.linkedin.com/in/horgito-m-41b047289/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
@@ -128,7 +128,7 @@ export default function Home() {
                     <FaLinkedin size={20} />
                   </a>
                   <a
-                    href="https://instagram.com/yourusername"
+                    href="https://www.instagram.com/gito.dev/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
@@ -136,7 +136,7 @@ export default function Home() {
                     <FaInstagram size={20} />
                   </a>
                   <a
-                    href="https://tiktok.com/@yourusername"
+                    href="https://www.tiktok.com/@gito.dev"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
