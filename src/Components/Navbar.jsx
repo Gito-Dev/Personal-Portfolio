@@ -76,7 +76,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black/90 backdrop-blur-lg px-6 py-6 sm:max-w-sm"
+              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[#101010] backdrop-blur-lg px-6 py-6 sm:max-w-sm"
             >
               <div className="flex items-center justify-between">
                 <motion.div
