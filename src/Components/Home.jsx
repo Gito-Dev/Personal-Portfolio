@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import pfp from "../assets/pfp.png";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-  FaEnvelope,
-  FaTiktok,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -57,8 +51,7 @@ export default function Home() {
                 Frontend Developer
               </h2>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Turning lines of code into smooth, engaging, and unforgettable
-                experiences.
+                Creating experiences that are smooth, engaging, and memorable.
               </p>
               <div className="flex items-center flex-wrap text-sm text-gray-400">
                 <div className="flex items-center whitespace-nowrap">
@@ -77,14 +70,13 @@ export default function Home() {
 
               {/* About Me Section */}
               <h2 className="text-xl font-medium text-gray-200 mt-8 mb-4">
-                About Me
+                Introduction
               </h2>
               <div className="space-y-3 text-sm text-gray-400">
                 <div className="flex items-start gap-3">
                   <span className="text-[#e84644] text-lg">•</span>
                   <p>
-                    Frontend Developer , learning my way to full Stack
-                    Developer.
+                    Frontend Developer,learning my way to full Stack Developer.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
@@ -97,7 +89,7 @@ export default function Home() {
                 <div className="flex items-start gap-3">
                   <span className="text-[#e84644] text-lg">•</span>
                   <p>
-                    Deeply enthusiastic to learn new Technologies and Methods
+                    Deeply enthusiastic to learn new Technologies and Methods.
                   </p>
                 </div>
               </div>
@@ -108,7 +100,7 @@ export default function Home() {
               </h2>
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-gray-400">
-                  <span>your.email@example.com</span>
+                  <span>gitodevelopment@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <a
