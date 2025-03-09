@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import pfp from "../assets/pfp.png";
 import { FaGithub, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
+import About from "./About";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -14,7 +15,7 @@ export default function Home() {
   const renderContent = () => {
     switch (activeTab) {
       case "tab1":
-        return <div>About Content</div>;
+        return <About />;
       case "tab2":
         return <div>Projects Content</div>;
       case "tab3":
@@ -51,8 +52,7 @@ export default function Home() {
                 Frontend Developer
               </h2>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Junior React Developer crafting modern web experiences with
-                magic and pixel-perfect precision.
+                Junior React Developer Crafting Modern Web Experiencese.
               </p>
               <div className="flex items-center flex-wrap text-sm text-gray-400">
                 <div className="flex items-center whitespace-nowrap">
