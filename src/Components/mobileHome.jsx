@@ -30,7 +30,7 @@ export default function MobileHome() {
 
   return (
     <>
-      <div className="h-[100vh] p-4 space-y-6 overflow-y-auto">
+      <div className="h-[100vh] p-4 space-y-6">
         {/* Profile Header */}
         <div className="pt-10 pb-[50px]">
           <Navbar />
