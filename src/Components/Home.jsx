@@ -28,7 +28,7 @@ export default function Home() {
     <div className="h-screen p-4">
       <div className="flex flex-col md:flex-row h-full gap-4">
         {/* sidebar */}
-        <div className="w-full md:w-1/4 h-1/4 md:h-full group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 bg-opacity-20 ">
+        <div className="w-full md:w-1/4 h-1/4 md:h-full group relative overflow-hidden rounded-2xl bg-[#1a1a1a] backdrop-blur-sm border border-white/20 bg-opacity-20 ">
           <div className="absolute inset-0 bg-gradient-to-t to-transparent" />
           <div className="relative flex flex-col h-full w-full p-6 text-gray-800">
             <div className="w-full flex items-center gap-4">
@@ -51,7 +51,8 @@ export default function Home() {
                 Frontend Developer
               </h2>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Creating experiences that are smooth, engaging, and memorable.
+                Junior React Developer crafting modern web experiences with
+                magic and pixel-perfect precision.
               </p>
               <div className="flex items-center flex-wrap text-sm text-gray-400">
                 <div className="flex items-center whitespace-nowrap">
@@ -95,7 +96,7 @@ export default function Home() {
               </div>
 
               {/* Contact & Social Links */}
-              <h2 className="text-xl font-medium text-gray-200 mt-8 mb-4">
+              <h2 className="text-xl font-medium text-gray-200 mt-6 mb-4">
                 Contact Me
               </h2>
               <div className="space-y-4">
@@ -143,7 +144,7 @@ export default function Home() {
         </div>
 
         {/* content center  */}
-        <div className="grow h-3/4 md:h-full group relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 bg-opacity-20">
+        <div className="grow h-3/4 md:h-full group relative overflow-hidden rounded-2xl bg-[#1a1a1a] backdrop-blur-sm border border-white/20 bg-opacity-20">
           <div className="absolute inset-0 bg-gradient-to-t to-transparent" />
           <div className="relative flex flex-col h-full w-full p-6">
             {/* Tabs Container */}
