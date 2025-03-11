@@ -41,15 +41,6 @@ export default function About() {
                 <span className="text-gray-400 text-sm ml-2">{"{"}</span>
               </motion.div>
 
-              <motion.h1
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-                className="text-2xl font-semibold bg-gradient-to-r from-[#e84644] via-[#ff6b6b] to-[#ff8585] bg-clip-text text-transparent ml-6"
-              >
-                Frontend Developer
-              </motion.h1>
-
               <motion.p
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -77,11 +68,6 @@ export default function About() {
               >
                 <span className="text-[#61dafb]">current:</span> "Creating Ai
                 Chatbot Agents"
-                <motion.span
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.8, repeat: Infinity }}
-                  className="inline-block w-0.5 h-4 bg-[#e84644] ml-0.5 align-middle"
-                />
               </motion.p>
 
               <motion.div
@@ -378,20 +364,63 @@ export default function About() {
           </GradientBorder>
         </motion.div>
 
-        {/* Contact - Now comes second */}
+        {/* ferlanc */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="h-[180px] w-[calc(33%-8px)]"
         >
           <GradientBorder className="h-full">
-            <div className="flex flex-col justify-center h-full">
-              <h2 className="text-xl font-medium text-gray-200 mb-2">
-                Open to Work
-              </h2>
-              <p className="text-gray-400 text-sm">
-                Available for freelance opportunities
-              </p>
+            <div className="flex flex-col items-center justify-center h-full space-y-4">
+              <motion.div
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                className="flex items-center gap-2"
+              >
+                <motion.span
+                  animate={{
+                    boxShadow: [
+                      "0 0 0 0 rgba(40, 200, 64, 0.4)",
+                      "0 0 0 10px rgba(40, 200, 64, 0)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-2.5 h-2.5 rounded-full bg-[#28c840]"
+                />
+                <h2 className="text-lg font-medium bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent">
+                  Open to Work
+                </h2>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex flex-col items-center"
+              >
+                <div className="flex gap-2">
+                  <motion.span
+                    whileHover={{ scale: 1.05 }}
+                    className="px-3 py-1 text-xs rounded-full bg-white/5 border border-[#28c840]/20 text-gray-300 
+                              hover:bg-[#28c840]/5 transition-all duration-300
+                              shadow-[0_0_2px_rgba(40,200,64,0.1)] hover:shadow-[0_0_15px_rgba(40,200,64,0.2)]"
+                  >
+                    Freelance
+                  </motion.span>
+                  <motion.span
+                    whileHover={{ scale: 1.05 }}
+                    className="px-3 py-1 text-xs rounded-full bg-white/5 border border-[#28c840]/20 text-gray-300 
+                              hover:bg-[#28c840]/5 transition-all duration-300
+                              shadow-[0_0_2px_rgba(40,200,64,0.1)] hover:shadow-[0_0_15px_rgba(40,200,64,0.2)]"
+                  >
+                    Remote
+                  </motion.span>
+                </div>
+              </motion.div>
             </div>
           </GradientBorder>
         </motion.div>
