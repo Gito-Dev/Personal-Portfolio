@@ -23,13 +23,74 @@ export default function About() {
           className="h-[180px] w-[calc(33%-8px)]"
         >
           <GradientBorder className="h-full">
-            <div className="flex flex-col justify-center h-full">
-              <h1 className="text-2xl font-semibold bg-gradient-to-r from-[#e84644] via-[#ff6b6b] to-[#ff8585] bg-clip-text text-transparent">
+            <div className="flex flex-col justify-center h-full relative overflow-hidden">
+              {/* Terminal-like header */}
+              <div className="absolute top-0 left-0 right-0 p-1 flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full bg-[#ff5f57]"></div>
+                <div className="w-2 h-2 rounded-full bg-[#febc2e]"></div>
+                <div className="w-2 h-2 rounded-full bg-[#28c840]"></div>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="mt-4"
+              >
+                <span className="text-[#e84644]">&gt;</span>
+                <span className="text-gray-400 text-sm ml-2">{"{"}</span>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                className="text-2xl font-semibold bg-gradient-to-r from-[#e84644] via-[#ff6b6b] to-[#ff8585] bg-clip-text text-transparent ml-6"
+              >
                 Frontend Developer
-              </h1>
-              <p className="text-gray-400 text-sm mt-2">
-                Junior React Developer Crafting Modern Web Experiences
-              </p>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+                className="text-gray-400 text-sm ml-6"
+              >
+                <span className="text-[#61dafb]">role:</span> "Junior React
+                Developer"
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.9 }}
+                className="text-gray-400 text-sm ml-6"
+              >
+                <span className="text-[#61dafb]">company:</span> "HighSky Ai"
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 1.2 }}
+                className="text-gray-400 text-sm ml-6"
+              >
+                <span className="text-[#61dafb]">current:</span> "Creating Ai
+                Chatbot Agents"
+                <motion.span
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                  className="inline-block w-0.5 h-4 bg-[#e84644] ml-0.5 align-middle"
+                />
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 1.5 }}
+              >
+                <span className="text-gray-400 text-sm">{"}"}</span>
+              </motion.div>
             </div>
           </GradientBorder>
         </motion.div>
@@ -41,16 +102,101 @@ export default function About() {
           className="h-[180px] w-[calc(33%-8px)]"
         >
           <GradientBorder className="h-full">
-            <div className="flex items-center justify-center h-full">
-              <div
-                className="w-20 h-20 rounded-full bg-cover bg-center border-2 border-[#e84644]/50"
-                style={{ backgroundImage: `url(${pfp})` }}
+            <div className="flex items-center justify-center h-full relative">
+              {/* Glowing background effect */}
+              <motion.div
+                className="absolute w-24 h-24 rounded-full blur-xl"
+                animate={{
+                  background: [
+                    "radial-gradient(circle, rgba(232,70,68,0.3) 0%, transparent 70%)",
+                    "radial-gradient(circle, rgba(232,70,68,0.6) 0%, transparent 70%)",
+                    "radial-gradient(circle, rgba(232,70,68,0.3) 0%, transparent 70%)",
+                  ],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
+
+              {/* Profile picture with hover spin animation */}
+              <motion.div
+                whileHover={{
+                  rotate: 360,
+                  transition: { duration: 0.5, ease: "easeOut" },
+                }}
+                className="relative z-10"
+              >
+                <div
+                  className="w-20 h-20 rounded-full bg-cover bg-center border-2 border-[#e84644]/50 shadow-[0_0_15px_rgba(232,70,68,0.3)] transition-transform duration-300"
+                  style={{ backgroundImage: `url(${pfp})` }}
+                />
+              </motion.div>
             </div>
           </GradientBorder>
         </motion.div>
 
-        {/* Social Links */}
+        {/* Location Info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="h-[180px] w-[calc(33%-8px)]"
+        >
+          <GradientBorder className="h-full">
+            <div className="flex flex-col items-center justify-center h-full space-y-2">
+              <div className="flex items-center gap-2 text-gray-400">
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-[#e84644] font-medium"
+                >
+                  +2
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-sm"
+                >
+                  Years with
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  whileHover={{
+                    scale: 1.1,
+                    textShadow: "0 0 8px rgb(232,70,68)",
+                  }}
+                  className="text-[#e84644] font-semibold tracking-wide"
+                  transition={{ duration: 0.3 }}
+                >
+                  React
+                </motion.span>
+              </div>
+
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="w-full h-px bg-gradient-to-r from-transparent via-[#e84644]/30 to-transparent"
+              />
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="flex items-center gap-2 text-gray-400"
+              >
+                <span>Learning Next.js</span>
+              </motion.div>
+            </div>
+          </GradientBorder>
+        </motion.div>
+
+        {/* react logo  */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -104,23 +250,6 @@ export default function About() {
                   }}
                 />
               </motion.div>
-            </div>
-          </GradientBorder>
-        </motion.div>
-
-        {/* Location Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="h-[180px] w-[calc(33%-8px)]"
-        >
-          <GradientBorder className="h-full">
-            <div className="flex flex-col justify-center h-full">
-              <div className="flex items-center gap-2 text-gray-400">
-                <span>21 y/o</span>
-                <span className="text-[#e84644]">|</span>
-                <span>Bulgaria</span>
-              </div>
             </div>
           </GradientBorder>
         </motion.div>
