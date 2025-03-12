@@ -133,39 +133,65 @@ export default function MobileHome() {
       >
         {/* Introduction */}
         <div className="space-y-4">
-          <motion.h2
-            initial={{ x: -20, opacity: 0 }}
-            animate={
-              isIntroInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }
-            }
-            transition={{ delay: 0.2 }}
-            className="text-xl font-medium text-gray-200 text-center"
-          >
+          <motion.h2 className="text-xl font-medium text-gray-200 text-center">
             Introduction
           </motion.h2>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="space-y-3 text-sm text-gray-400"
-          >
-            <div className="flex flex-col items-center text-center gap-2">
-              <span className="text-[#e84644] font-medium">01</span>
+          <motion.div className="space-y-3 text-sm text-gray-400">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center text-center gap-2"
+            >
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+                className="text-[#e84644] font-medium"
+              >
+                01
+              </motion.span>
               <p>
                 Frontend Developer, learning my way to full Stack Developer.
               </p>
-            </div>
-            <div className="flex flex-col items-center text-center gap-2">
-              <span className="text-[#e84644] font-medium">02</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col items-center text-center gap-2"
+            >
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+                className="text-[#e84644] font-medium"
+              >
+                02
+              </motion.span>
               <p>
                 Specialized in crafting responsive and Creative user interfaces
                 using mainly React and modern web technologies.
               </p>
-            </div>
-            <div className="flex flex-col items-center text-center gap-2">
-              <span className="text-[#e84644] font-medium">03</span>
-              <p>Deeply enthusiastic to learn new Technologies and Methods</p>
-            </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-col items-center text-center gap-2"
+            >
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+                className="text-[#e84644] font-medium"
+              >
+                03
+              </motion.span>
+              <p>Deeply enthusiastic to learn new Technologies and Methods.</p>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
@@ -191,19 +217,35 @@ export default function MobileHome() {
         </motion.h2>
         <div className="space-y-6">
           {/* Frontend */}
-          <motion.div className="space-y-2">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-2"
+          >
             <h3 className="text-sm font-medium text-[#e84644] text-center">
               01 | Frontend
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
-              {["React", "JavaScript", "Tailwind CSS", "HTML/CSS"].map(
-                (tech) => (
+              {["React", "JavaScript", "Tailwind", "HTML/CSS", "Next.js"].map(
+                (tech, index) => (
                   <motion.span
                     key={tech}
-                    variants={techButtonVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300"
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.1,
+                      ease: "easeOut",
+                    }}
+                    whileHover={{
+                      scale: 1.1,
+                      color: "#e84644",
+                      borderColor: "#e84644",
+                      boxShadow: "0 0 15px rgba(232,70,68,0.3)",
+                    }}
+                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300 
+                              transition-all duration-300"
                   >
                     {tech}
                   </motion.span>
@@ -213,46 +255,79 @@ export default function MobileHome() {
           </motion.div>
 
           {/* Backend */}
-          <motion.div className="space-y-2">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="space-y-2"
+          >
             <h3 className="text-sm font-medium text-[#e84644] text-center">
               02 | Backend
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
-              {["Node.js", "Axios", "REST APIs"].map((tech) => (
-                <motion.span
-                  key={tech}
-                  variants={techButtonVariants}
-                  initial="initial"
-                  whileHover="hover"
-                  className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300"
-                >
-                  {tech}
-                </motion.span>
-              ))}
+              {["Node.js", "Axios", "Firebase", "REST APIs"].map(
+                (tech, index) => (
+                  <motion.span
+                    key={tech}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.3 + index * 0.1,
+                      ease: "easeOut",
+                    }}
+                    whileHover={{
+                      scale: 1.1,
+                      color: "#e84644",
+                      borderColor: "#e84644",
+                      boxShadow: "0 0 15px rgba(232,70,68,0.3)",
+                    }}
+                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300 
+                            transition-all duration-300"
+                  >
+                    {tech}
+                  </motion.span>
+                )
+              )}
             </div>
           </motion.div>
 
-          {/* Tools & Others */}
-          <motion.div className="space-y-2">
+          {/* Tools & Libraries */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="space-y-2"
+          >
             <h3 className="text-sm font-medium text-[#e84644] text-center">
-              03 | Tools & Others
+              03 | Tools & Libraries
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
               {[
                 "Github",
-                "VS Code",
-                "Figma",
+                "VS Code/Cursor",
+                "Vercel/Netlify",
                 "Spline",
-                "Netlify",
-                "Firebase",
-                "Vercel",
-              ].map((tech) => (
+                "Framer Motion",
+                "Router",
+              ].map((tech, index) => (
                 <motion.span
                   key={tech}
-                  variants={techButtonVariants}
-                  initial="initial"
-                  whileHover="hover"
-                  className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300"
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.5 + index * 0.1,
+                    ease: "easeOut",
+                  }}
+                  whileHover={{
+                    scale: 1.1,
+                    color: "#e84644",
+                    borderColor: "#e84644",
+                    boxShadow: "0 0 15px rgba(232,70,68,0.3)",
+                  }}
+                  className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300 
+                            transition-all duration-300"
                 >
                   {tech}
                 </motion.span>
