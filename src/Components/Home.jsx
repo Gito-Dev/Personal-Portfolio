@@ -4,9 +4,12 @@ import pfp from "../assets/pfp.png";
 import { FaGithub, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
 import About from "./About";
 import Divider from "./Divider";
+import ResumeOverlay from "./ResumeOverlay";
+import resumePDF from "../assets/Horgito Mhillaj CV.pdf";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("tab1");
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   const tabs = [
     { id: "tab1", label: "About" },
@@ -123,6 +126,7 @@ export default function Home() {
                   boxShadow: "0 0 20px rgba(232,70,68,0.5)",
                 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => setIsResumeOpen(true)}
                 className="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-[#e84644] to-[#ff8585] group-hover:from-[#e84644] group-hover:to-[#ff8585] hover:text-white focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-[#e84644]/30 shadow-[0_0_15px_rgba(232,70,68,0.3)]"
               >
                 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 rounded-md group-hover:bg-transparent">
@@ -235,6 +239,12 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <ResumeOverlay
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+        pdfUrl={resumePDF}
+      />
     </div>
   );
 }

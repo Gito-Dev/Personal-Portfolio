@@ -2,6 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import reactlogo from "../assets/react.svg";
 import logo from "../assets/logo.png";
+import seo from "../assets/seo.svg";
+import web from "../assets/web.svg";
+import Ui from "../assets/Ui.svg";
+import project from "../assets/project.svg";
+import laptop from "../assets/laptop.svg";
 
 const GradientBorder = ({ children, className = "" }) => (
   <div className={`relative group ${className}`}>
@@ -357,20 +362,94 @@ export default function About() {
           </GradientBorder>
         </motion.div>
 
-        {/* Open to Work - Now comes first */}
+        {/* Skills & services */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="h-[180px] w-[calc(66%-8px)]"
         >
           <GradientBorder className="h-full">
-            <div className="flex flex-col justify-center h-full">
-              <h2 className="text-xl font-medium text-gray-200 mb-2">
-                Open to Work
+            <div className="flex flex-col h-full p-4">
+              <h2 className="text-xl font-medium text-gray-200 mb-3">
+                Skills & Services
               </h2>
-              <p className="text-gray-400 text-sm">
-                Available for freelance opportunities
-              </p>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  {
+                    title: "UI/UX Design",
+                    icon: (
+                      <img
+                        src={Ui}
+                        alt="UI/UX"
+                        className="w-4 h-4 text-[#e84644]"
+                      />
+                    ),
+                  },
+                  {
+                    title: "Frontend Dev",
+                    icon: (
+                      <img
+                        src={laptop}
+                        alt="Frontend"
+                        className="w-4 h-4 text-[#e84644]"
+                      />
+                    ),
+                  },
+                  {
+                    title: "3D Interactions",
+                    icon: (
+                      <img
+                        src={web}
+                        alt="3D"
+                        className="w-4 h-4 text-[#e84644]"
+                      />
+                    ),
+                  },
+                  {
+                    title: "Project Management",
+                    icon: (
+                      <img
+                        src={project}
+                        alt="Project"
+                        className="w-4 h-4 text-[#e84644]"
+                      />
+                    ),
+                  },
+                  {
+                    title: "Web Design",
+                    icon: (
+                      <img
+                        src={web}
+                        alt="Design"
+                        className="w-4 h-4 text-[#e84644]"
+                      />
+                    ),
+                  },
+                  {
+                    title: "Basic SEO",
+                    icon: (
+                      <img
+                        src={seo}
+                        alt="SEO"
+                        className="w-4 h-4 text-[#e84644]"
+                      />
+                    ),
+                  },
+                ].map((skill, index) => (
+                  <motion.div
+                    key={skill.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-[#e84644]/20
+                             hover:bg-[#e84644]/5 transition-all duration-300 cursor-default
+                             shadow-[0_0_2px_rgba(232,70,68,0.1)] hover:shadow-[0_0_15px_rgba(232,70,68,0.2)]"
+                  >
+                    <span className="text-[#e84644]">{skill.icon}</span>
+                    <span className="text-xs text-gray-300">{skill.title}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </GradientBorder>
         </motion.div>
