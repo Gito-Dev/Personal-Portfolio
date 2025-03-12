@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import { motion, useInView } from "framer-motion";
 import pfp from "../assets/pfp.png";
 import Divider from "./Divider";
+import reactlogo from "../assets/react.svg";
+import logo from "../assets/logo.png";
 
 // Add this variant for hover animation
 const techButtonVariants = {
@@ -29,359 +31,419 @@ export default function MobileHome() {
   const isContactInView = useInView(contactRef, { once: true });
 
   return (
-    <>
-      <div className="h-[100vh] p-4 space-y-6">
-        {/* Profile Header */}
-        <div className="pt-10 pb-[50px]">
-          <Navbar />
-        </div>
+    <div className="flex flex-col p-4 space-y-6">
+      {/* Profile Header */}
+      <div className="pt-10 pb-[50px]">
+        <Navbar />
+      </div>
 
-        {/* Centered Hero Section */}
-        <motion.div
-          ref={heroRef}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center justify-center min-h-[60vh] mb-8"
-        >
-          <div className="text-center space-y-8">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col items-center gap-4"
-            >
-              <button
-                className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#e84644] hover:bg-[#e84644]/90 transition-all duration-300 flex items-center justify-center shadow-lg"
-                style={{
-                  backgroundImage: `url(${pfp})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              ></button>
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl font-semibold tracking-tight bg-gradient-to-r from-[#e84644] via-[#ff6b6b] to-[#ff8585] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(232,70,68,0.75)]">
-                  Gito Dev
-                </h1>
-                <Divider isVisible={isHeroInView} />
-              </div>
-            </motion.div>
+      {/* Centered Hero Section */}
+      <motion.div
+        ref={heroRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col items-center justify-center min-h-[60vh] mb-8"
+      >
+        <div className="text-center space-y-8">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-col items-center gap-4"
+          >
+            <button
+              className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#e84644] hover:bg-[#e84644]/90 transition-all duration-300 flex items-center justify-center shadow-lg"
+              style={{
+                backgroundImage: `url(${pfp})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></button>
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight bg-gradient-to-r from-[#e84644] via-[#ff6b6b] to-[#ff8585] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(232,70,68,0.75)]">
+                Gito Dev
+              </h1>
+              <Divider isVisible={isHeroInView} />
+            </div>
+          </motion.div>
 
-            {/* Profile Info Section */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="space-y-4"
-            >
-              <motion.h2
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="text-xl font-medium text-gray-200"
-              >
-                Frontend Developer
-              </motion.h2>
-              <motion.p
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="text-gray-400 text-sm leading-relaxed"
-              >
-                Junior React Developer crafting modern web experiences with
-                magic and pixel-perfect precision.
-              </motion.p>
-              <motion.div
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.7 }}
-                className="text-sm text-gray-400"
-              >
-                <div className="flex flex-wrap items-center justify-center gap-2">
-                  <span>21 y/o</span>
-                  <span className="text-[#e84644]">|</span>
-                  <span>Based in Bulgaria</span>
-                  <span className="text-[#e84644]">|</span>
-                  <span>Cs Student</span>
-                </div>
-              </motion.div>
-              <motion.button
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                className="w-full md:w-auto relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-[#e84644] to-[#ff8585] group-hover:from-[#e84644] group-hover:to-[#ff8585] hover:text-white focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-[#e84644]/30"
-              >
-                <span className="w-full px-8 py-2.5 transition-all ease-in duration-75 rounded-md group-hover:bg-transparent">
-                  View Resume
-                </span>
-              </motion.button>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* First Divider */}
-        <Divider isVisible={isHeroInView} />
-
-        {/* About Me Section */}
-        <motion.div
-          ref={introRef}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isIntroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8"
-        >
-          {/* Introduction */}
-          <div className="space-y-4">
+          {/* Profile Info Section */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="space-y-4"
+          >
             <motion.h2
               initial={{ x: -20, opacity: 0 }}
-              animate={
-                isIntroInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }
-              }
-              transition={{ delay: 0.2 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
               className="text-xl font-medium text-gray-200"
             >
-              Introduction
+              Frontend Developer
             </motion.h2>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="space-y-3 text-sm text-gray-400"
+            <motion.p
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="text-gray-400 text-sm leading-relaxed"
             >
-              <div className="flex items-start gap-3">
-                <span className="text-[#e84644] text-lg">•</span>
-                <p>
-                  Frontend Developer, learning my way to full Stack Developer.
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#e84644] text-lg">•</span>
-                <p>
-                  Specialized in crafting responsive and Creative user
-                  interfaces using mainly React and modern web technologies.
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-[#e84644] text-lg">•</span>
-                <p>Deeply enthusiastic to learn new Technologies and Methods</p>
+              Junior React Developer crafting modern web experiences with magic
+              and pixel-perfect precision.
+            </motion.p>
+            <motion.div
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="text-sm text-gray-400"
+            >
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <span>21 y/o</span>
+                <span className="text-[#e84644]">|</span>
+                <span>Based in Bulgaria</span>
+                <span className="text-[#e84644]">|</span>
+                <span>Cs Student</span>
               </div>
             </motion.div>
-          </div>
-        </motion.div>
+            <motion.button
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="w-full md:w-auto relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-[#e84644] to-[#ff8585] group-hover:from-[#e84644] group-hover:to-[#ff8585] hover:text-white focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-[#e84644]/30"
+            >
+              <span className="w-full px-8 py-2.5 transition-all ease-in duration-75 rounded-md group-hover:bg-transparent">
+                View Resume
+              </span>
+            </motion.button>
+          </motion.div>
+        </div>
+      </motion.div>
 
-        {/* Second Divider */}
-        <Divider isVisible={isIntroInView} />
+      {/* First Divider */}
+      <Divider isVisible={isHeroInView} />
 
-        {/* Tech Stack Section with updated buttons */}
-        <motion.div
-          ref={techStackRef}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isTechInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-4"
-        >
+      {/* About Me Section */}
+      <motion.div
+        ref={introRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isIntroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-8"
+      >
+        {/* Introduction */}
+        <div className="space-y-4">
           <motion.h2
             initial={{ x: -20, opacity: 0 }}
             animate={
-              isTechInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }
+              isIntroInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }
             }
             transition={{ delay: 0.2 }}
-            className="text-xl font-medium text-gray-200"
+            className="text-xl font-medium text-gray-200 text-center"
           >
-            Tech Stack
-          </motion.h2>
-          <div className="space-y-4">
-            {/* Frontend */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={
-                isTechInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-              }
-              transition={{ delay: 0.3 }}
-              className="space-y-2"
-            >
-              <h3 className="text-sm font-medium text-[#e84644]">Frontend</h3>
-              <div className="flex flex-wrap gap-2">
-                {["React", "JavaScript", "Tailwind CSS", "HTML/CSS"].map(
-                  (tech, index) => (
-                    <motion.span
-                      key={tech}
-                      variants={techButtonVariants}
-                      initial="initial"
-                      whileHover="hover"
-                      animate={
-                        isTechInView
-                          ? { opacity: 1, y: 0 }
-                          : { opacity: 0, y: 10 }
-                      }
-                      transition={{
-                        delay: 0.3 + index * 0.1,
-                        duration: 0.2,
-                      }}
-                      className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300 
-                             hover:bg-[#e84644]/5 transition-all duration-300 cursor-default
-                             shadow-[0_0_2px_rgba(232,70,68,0.1)] hover:shadow-[0_0_15px_rgba(232,70,68,0.2)]"
-                    >
-                      {tech}
-                    </motion.span>
-                  )
-                )}
-              </div>
-            </motion.div>
-
-            {/* Backend - Apply same changes to Backend section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={
-                isTechInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-              }
-              transition={{ delay: 0.4 }}
-              className="space-y-2"
-            >
-              <h3 className="text-sm font-medium text-[#e84644]">Backend</h3>
-              <div className="flex flex-wrap gap-2">
-                {["Node.js", "Axios", "REST APIs"].map((tech, index) => (
-                  <motion.span
-                    key={tech}
-                    variants={techButtonVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    animate={
-                      isTechInView
-                        ? { opacity: 1, y: 0 }
-                        : { opacity: 0, y: 10 }
-                    }
-                    transition={{
-                      delay: 0.4 + index * 0.1,
-                      duration: 0.2,
-                    }}
-                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300 
-                             hover:bg-[#e84644]/5 transition-all duration-300 cursor-default
-                             shadow-[0_0_2px_rgba(232,70,68,0.1)] hover:shadow-[0_0_15px_rgba(232,70,68,0.2)]"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Tools & Others - Apply same changes */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={
-                isTechInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-              }
-              transition={{ delay: 0.5 }}
-              className="space-y-2"
-            >
-              <h3 className="text-sm font-medium text-[#e84644]">
-                Tools & Others
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Github",
-                  "VS Code",
-                  "Figma",
-                  "Spline",
-                  "Netlify",
-                  "Firebase",
-                  "Vercel",
-                ].map((tech, index) => (
-                  <motion.span
-                    key={tech}
-                    variants={techButtonVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    animate={
-                      isTechInView
-                        ? { opacity: 1, y: 0 }
-                        : { opacity: 0, y: 10 }
-                    }
-                    transition={{
-                      delay: 0.5 + index * 0.1,
-                      duration: 0.2,
-                    }}
-                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300 
-                             hover:bg-[#e84644]/5 transition-all duration-300 cursor-default
-                             shadow-[0_0_2px_rgba(232,70,68,0.1)] hover:shadow-[0_0_15px_rgba(232,70,68,0.2)]"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Third Divider */}
-        <Divider isVisible={isTechInView} />
-
-        {/* Contact & Social Links */}
-        <motion.div
-          ref={contactRef}
-          initial={{ opacity: 0, y: 50 }}
-          animate={
-            isContactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
-          }
-          transition={{ duration: 0.5 }}
-          className="space-y-4"
-        >
-          <motion.h2
-            initial={{ x: -20, opacity: 0 }}
-            animate={
-              isContactInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }
-            }
-            transition={{ delay: 0.2 }}
-            className="text-xl font-medium text-gray-200"
-          >
-            Contact Me
+            Introduction
           </motion.h2>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="space-y-4"
+            transition={{ delay: 1 }}
+            className="space-y-3 text-sm text-gray-400"
           >
-            <div className="text-gray-400">
-              <span>gitodevelopment@gmail.com</span>
+            <div className="flex flex-col items-center text-center gap-2">
+              <span className="text-[#e84644] font-medium">01</span>
+              <p>
+                Frontend Developer, learning my way to full Stack Developer.
+              </p>
             </div>
-            <div className="flex items-center gap-6">
-              <a
-                href="https://github.com/Gito-Dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
-              >
-                <FaGithub size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/horgito-m-41b047289/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
-              >
-                <FaLinkedin size={24} />
-              </a>
-              <a
-                href="https://www.instagram.com/gito.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
-              >
-                <FaInstagram size={24} />
-              </a>
-              <a
-                href="https://www.tiktok.com/@gito.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
-              >
-                <FaTiktok size={24} />
-              </a>
+            <div className="flex flex-col items-center text-center gap-2">
+              <span className="text-[#e84644] font-medium">02</span>
+              <p>
+                Specialized in crafting responsive and Creative user interfaces
+                using mainly React and modern web technologies.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center gap-2">
+              <span className="text-[#e84644] font-medium">03</span>
+              <p>Deeply enthusiastic to learn new Technologies and Methods</p>
             </div>
           </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Second Divider */}
+      <Divider isVisible={isIntroInView} />
+
+      {/* Tech Stack Section */}
+      <motion.div
+        ref={techStackRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isTechInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-4"
+      >
+        <motion.h2
+          initial={{ x: -20, opacity: 0 }}
+          animate={isTechInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-xl font-medium text-gray-200 text-center"
+        >
+          Tech Stack
+        </motion.h2>
+        <div className="space-y-6">
+          {/* Frontend */}
+          <motion.div className="space-y-2">
+            <h3 className="text-sm font-medium text-[#e84644] text-center">
+              01 | Frontend
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["React", "JavaScript", "Tailwind CSS", "HTML/CSS"].map(
+                (tech) => (
+                  <motion.span
+                    key={tech}
+                    variants={techButtonVariants}
+                    initial="initial"
+                    whileHover="hover"
+                    className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300"
+                  >
+                    {tech}
+                  </motion.span>
+                )
+              )}
+            </div>
+          </motion.div>
+
+          {/* Backend */}
+          <motion.div className="space-y-2">
+            <h3 className="text-sm font-medium text-[#e84644] text-center">
+              02 | Backend
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["Node.js", "Axios", "REST APIs"].map((tech) => (
+                <motion.span
+                  key={tech}
+                  variants={techButtonVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300"
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Tools & Others */}
+          <motion.div className="space-y-2">
+            <h3 className="text-sm font-medium text-[#e84644] text-center">
+              03 | Tools & Others
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                "Github",
+                "VS Code",
+                "Figma",
+                "Spline",
+                "Netlify",
+                "Firebase",
+                "Vercel",
+              ].map((tech) => (
+                <motion.span
+                  key={tech}
+                  variants={techButtonVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  className="px-3 py-1 text-sm rounded-full bg-white/5 border border-[#e84644]/20 text-gray-300"
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Divider between Tech Stack and Experience */}
+      <Divider isVisible={isTechInView} />
+
+      {/* Experience Section */}
+      <div className="flex flex-col items-center space-y-2">
+        <div className="flex items-center gap-2">
+          <motion.span
+            animate={{
+              boxShadow: [
+                "0 0 0 0 rgba(232,70,68,0.4)",
+                "0 0 0 10px rgba(232,70,68,0)",
+              ],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="w-2 h-2 rounded-full bg-[#e84644]"
+          />
+          <h2 className="text-xl font-medium text-gray-200">
+            Experience | <span className="text-gray-200">Present</span>
+          </h2>
+        </div>
+
+        <div className="flex flex-col items-center text-center space-y-1">
+          <motion.h3
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-sm font-medium text-[#e84644]"
+          >
+            Junior React Developer
+          </motion.h3>
+          <motion.p className="text-sm text-gray-300">HighSky AI</motion.p>
+          <motion.p className="text-xs text-gray-400">
+            Specializing in AI Chatbot Development
+          </motion.p>
+        </div>
+
+        {/* React Experience */}
+        <div className="flex items-center gap-1 text-sm mt-2">
+          <span className="text-[#e84644] font-medium">+2</span>
+          <span className="text-gray-400">Years with</span>
+          <span className="text-[#e84644] font-medium">React</span>
+        </div>
+        <span className="text-xs text-gray-400">Learning Next.js</span>
+      </div>
+
+      <Divider />
+
+      {/* Logos Section - Closer Together */}
+      <div className="flex justify-center items-center gap-8">
+        <motion.div className="relative w-14 h-14">
+          <img
+            src={logo}
+            alt="Company Logo"
+            className="w-full h-full object-contain [filter:drop-shadow(0_0_15px_rgba(232,70,68,0.6))]"
+          />
+        </motion.div>
+
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="relative w-14 h-14"
+        >
+          <img
+            src={reactlogo}
+            alt="React Logo"
+            className="w-full h-full [filter:drop-shadow(0_0_15px_rgba(232,70,68,0.6))]"
+          />
         </motion.div>
       </div>
-    </>
+
+      <Divider />
+
+      {/* Open to Work Section */}
+      <div className="flex flex-col items-center space-y-3">
+        <div className="flex items-center gap-2">
+          <motion.span
+            animate={{
+              boxShadow: [
+                "0 0 0 0 rgba(40,200,64,0.4)",
+                "0 0 0 10px rgba(40,200,64,0)",
+              ],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="w-2 h-2 rounded-full bg-[#28c840]"
+          />
+          <h2 className="text-base font-medium bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent">
+            Open to Work
+          </h2>
+        </div>
+
+        <div className="flex gap-2">
+          <motion.span
+            whileHover={{ scale: 1.05 }}
+            className="px-3 py-1 text-xs rounded-full bg-white/5 border border-[#28c840]/20 text-gray-300 
+                      hover:bg-[#28c840]/5 transition-all duration-300"
+          >
+            Freelance
+          </motion.span>
+          <motion.span
+            whileHover={{ scale: 1.05 }}
+            className="px-3 py-1 text-xs rounded-full bg-white/5 border border-[#28c840]/20 text-gray-300 
+                      hover:bg-[#28c840]/5 transition-all duration-300"
+          >
+            Remote
+          </motion.span>
+        </div>
+      </div>
+
+      <Divider />
+
+      {/* Contact Section - Moved to bottom */}
+      <motion.div
+        ref={contactRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isContactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col items-center space-y-4"
+      >
+        <motion.h2
+          initial={{ x: -20, opacity: 0 }}
+          animate={
+            isContactInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }
+          }
+          transition={{ delay: 0.2 }}
+          className="text-xl font-medium text-gray-200"
+        >
+          Contact Me
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="flex flex-col items-center space-y-4"
+        >
+          <div className="text-gray-400 text-center">
+            <span>gitodevelopment@gmail.com</span>
+          </div>
+          <div className="flex items-center justify-center gap-6">
+            <a
+              href="https://github.com/Gito-Dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
+            >
+              <FaGithub size={24} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/horgito-m-41b047289/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
+            >
+              <FaLinkedin size={24} />
+            </a>
+            <a
+              href="https://www.instagram.com/gito.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
+            >
+              <FaInstagram size={24} />
+            </a>
+            <a
+              href="https://www.tiktok.com/@gito.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#e84644] transition-colors duration-300"
+            >
+              <FaTiktok size={24} />
+            </a>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      <Divider />
+    </div>
   );
 }

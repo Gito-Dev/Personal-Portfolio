@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import reactlogo from "../assets/react.svg";
-import pfp from "../assets/pfp.png";
+import logo from "../assets/logo.png";
 
 const GradientBorder = ({ children, className = "" }) => (
   <div className={`relative group ${className}`}>
@@ -23,65 +23,66 @@ export default function About() {
           className="h-[180px] w-[calc(33%-8px)]"
         >
           <GradientBorder className="h-full">
-            <div className="flex flex-col justify-center h-full relative overflow-hidden">
-              {/* Terminal-like header */}
-              <div className="absolute top-0 left-0 right-0 p-1 flex items-center gap-1.5">
-                <div className="w-2 h-2 rounded-full bg-[#ff5f57]"></div>
-                <div className="w-2 h-2 rounded-full bg-[#febc2e]"></div>
-                <div className="w-2 h-2 rounded-full bg-[#28c840]"></div>
+            <div className="flex flex-col items-center justify-center h-full space-y-2">
+              <motion.div
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                className="flex items-center gap-2"
+              >
+                <motion.span
+                  animate={{
+                    boxShadow: [
+                      "0 0 0 0 rgba(232,70,68,0.4)",
+                      "0 0 0 10px rgba(232,70,68,0)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-2.5 h-2.5 rounded-full bg-[#e84644]"
+                />
+                <h2 className="text-lg font-medium bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent">
+                  Experience | <span>Present</span>
+                </h2>
+              </motion.div>
+
+              <div className="flex flex-col items-center text-center">
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-base font-medium text-[#e84644]"
+                >
+                  Junior React Developer
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-sm text-gray-300"
+                >
+                  HighSky AI
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.4,
+                    ease: "easeOut",
+                  }}
+                  className="text-xs text-gray-400"
+                >
+                  Specializing in AI Chatbot Development
+                </motion.p>
               </div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mt-4"
-              >
-                <span className="text-[#e84644]">&gt;</span>
-                <span className="text-gray-400 text-sm ml-2">{"{"}</span>
-              </motion.div>
-
-              <motion.p
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.6 }}
-                className="text-gray-400 text-sm ml-6"
-              >
-                <span className="text-[#61dafb]">role:</span> "Junior React
-                Developer"
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.9 }}
-                className="text-gray-400 text-sm ml-6"
-              >
-                <span className="text-[#61dafb]">company:</span> "HighSky Ai"
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.2 }}
-                className="text-gray-400 text-sm ml-6"
-              >
-                <span className="text-[#61dafb]">current:</span> "Creating Ai
-                Chatbot Agents"
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.5 }}
-              >
-                <span className="text-gray-400 text-sm">{"}"}</span>
-              </motion.div>
             </div>
           </GradientBorder>
         </motion.div>
 
-        {/* Profile Picture */}
+        {/* logo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,17 +108,27 @@ export default function About() {
                 }}
               />
 
-              {/* Profile picture with hover spin animation */}
-              <motion.div
-                whileHover={{
-                  rotate: 360,
-                  transition: { duration: 0.5, ease: "easeOut" },
-                }}
-                className="relative z-10"
-              >
-                <div
-                  className="w-20 h-20 rounded-full bg-cover bg-center border-2 border-[#e84644]/50 shadow-[0_0_15px_rgba(232,70,68,0.3)] transition-transform duration-300"
-                  style={{ backgroundImage: `url(${pfp})` }}
+              {/* Logo with glow */}
+              <motion.div className="relative z-10">
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="w-25 h-25 object-contain [filter:drop-shadow(0_0_15px_rgba(232,70,68,0.6))]"
+                />
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{
+                    filter: [
+                      "drop-shadow(0 0 30px rgba(232,70,68,0.9))",
+                      "drop-shadow(0 0 60px rgba(232,70,68,0.9))",
+                      "drop-shadow(0 0 30px rgba(232,70,68,0.9))",
+                    ],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 />
               </motion.div>
             </div>

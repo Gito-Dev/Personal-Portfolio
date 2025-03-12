@@ -50,14 +50,14 @@ export default function Home() {
     <div className="h-screen p-4">
       <div className="flex flex-col md:flex-row h-full gap-4">
         {/* sidebar */}
-        <motion.div
-          initial="initial"
-          animate="animate"
-          variants={sidebarVariants}
-          className="w-full md:w-1/4 h-1/4 md:h-full group relative overflow-hidden rounded-2xl bg-[#1a1a1a] backdrop-blur-sm border border-white/20 bg-opacity-20"
-        >
+        <div className="w-full md:w-1/4 h-1/4 md:h-full group relative overflow-hidden rounded-2xl bg-[#1a1a1a] backdrop-blur-sm border border-white/20 bg-opacity-20">
           <div className="absolute inset-0 bg-gradient-to-t to-transparent" />
-          <div className="relative flex flex-col h-full w-full p-6 text-gray-800">
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={sidebarVariants}
+            className="relative flex flex-col h-full w-full p-6 text-gray-800"
+          >
             {/* Profile Header */}
             <motion.div
               variants={itemVariants}
@@ -204,8 +204,8 @@ export default function Home() {
                 </motion.div>
               </motion.div>
             </motion.div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* content center  */}
         <div className="grow h-3/4 md:h-full group relative overflow-hidden rounded-2xl bg-[#1a1a1a] backdrop-blur-sm border border-white/20 bg-opacity-20">
