@@ -6,6 +6,11 @@ import pfp from "../assets/pfp.png";
 import Divider from "./Divider";
 import reactlogo from "../assets/react.svg";
 import logo from "../assets/logo.png";
+import Ui from "../assets/Ui.svg";
+import laptop from "../assets/laptop.svg";
+import web from "../assets/web.svg";
+import project from "../assets/project.svg";
+import seo from "../assets/seo.svg";
 
 // Add this variant for hover animation
 const techButtonVariants = {
@@ -337,8 +342,128 @@ export default function MobileHome() {
         </div>
       </motion.div>
 
-      {/* Divider between Tech Stack and Experience */}
+      {/* Divider between Tech Stack and Skills & Services */}
       <Divider isVisible={isTechInView} />
+
+      {/* Skills & Services Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-4"
+      >
+        <motion.h2
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-xl font-medium text-gray-200 text-center"
+        >
+          Skills & Services
+        </motion.h2>
+        <div className="space-y-6">
+          {/* Frontend & Design */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-2"
+          >
+            <h3 className="text-sm font-medium text-[#e84644] text-center">
+              01 | Frontend & Design
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                {
+                  title: "UI/UX Design",
+                  icon: Ui,
+                },
+                {
+                  title: "Frontend Dev",
+                  icon: laptop,
+                },
+                {
+                  title: "Web Design",
+                  icon: web,
+                },
+              ].map((skill, index) => (
+                <motion.div
+                  key={skill.title}
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    ease: "easeOut",
+                  }}
+                  whileHover={{
+                    scale: 1.1,
+                    color: "#e84644",
+                    borderColor: "#e84644",
+                    boxShadow: "0 0 15px rgba(232,70,68,0.3)",
+                  }}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-[#e84644]/20 
+                            hover:bg-[#e84644]/5 transition-all duration-300"
+                >
+                  <img src={skill.icon} alt={skill.title} className="w-4 h-4" />
+                  <span className="text-xs text-gray-300">{skill.title}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Development & Management */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="space-y-2"
+          >
+            <h3 className="text-sm font-medium text-[#e84644] text-center">
+              02 | Development & Management
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                {
+                  title: "3D Interactions",
+                  icon: web,
+                },
+                {
+                  title: "Project Management",
+                  icon: project,
+                },
+                {
+                  title: "Basic SEO",
+                  icon: seo,
+                },
+              ].map((skill, index) => (
+                <motion.div
+                  key={skill.title}
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.3 + index * 0.1,
+                    ease: "easeOut",
+                  }}
+                  whileHover={{
+                    scale: 1.1,
+                    color: "#e84644",
+                    borderColor: "#e84644",
+                    boxShadow: "0 0 15px rgba(232,70,68,0.3)",
+                  }}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-[#e84644]/20 
+                            hover:bg-[#e84644]/5 transition-all duration-300"
+                >
+                  <img src={skill.icon} alt={skill.title} className="w-4 h-4" />
+                  <span className="text-xs text-gray-300">{skill.title}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      <Divider />
 
       {/* Experience Section */}
       <div className="flex flex-col items-center space-y-2">
