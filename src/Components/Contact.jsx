@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const GradientBorder = ({ children, className = "" }) => (
   <div className={`relative group ${className}`}>
@@ -12,15 +13,57 @@ const GradientBorder = ({ children, className = "" }) => (
 );
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const form = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
+
+  useEffect(() => {
+    emailjs.init("DFrx9uaTpXsVpN8wZ");
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    setIsLoading(true);
+    setStatus({ type: "", message: "" });
+
+    const formData = new FormData(form.current);
+    console.log({
+      from_name: formData.get("from_name"),
+      from_email: formData.get("from_email"),
+      message: formData.get("message"),
+    });
+
+    emailjs
+      .sendForm(
+        "service_w98fuua",
+        "template_qodhoey",
+        form.current,
+        "DFrx9uaTpXsVpN8wZ"
+      )
+      .then((result) => {
+        console.log("SUCCESS!", result.text);
+        setStatus({
+          type: "success",
+          message: "Message sent successfully! ✨",
+        });
+        form.current.reset();
+      })
+      .catch((error) => {
+        console.error("FAILED...", error.text);
+        setStatus({
+          type: "error",
+          message: "Failed to send message. Please try again. 😕",
+        });
+      })
+      .finally(() => {
+        setIsLoading(false);
+        // Clear success message after 5 seconds
+        if (status.type === "success") {
+          setTimeout(() => {
+            setStatus({ type: "", message: "" });
+          }, 5000);
+        }
+      });
   };
 
   return (
@@ -37,17 +80,19 @@ export default function Contact() {
               <h2 className="text-xl font-medium text-gray-200 mb-6">
                 Get in Touch
               </h2>
-              <form onSubmit={handleSubmit} className="flex flex-col h-full">
+              <form
+                ref={form}
+                onSubmit={handleSubmit}
+                className="flex flex-col h-full"
+              >
                 <div className="space-y-5 flex-1">
                   <div className="space-y-2">
                     <label className="text-sm text-gray-300">Name</label>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
                       type="text"
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
+                      name="from_name"
+                      required
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border border-[#e84644]/20 
                                text-gray-200 focus:outline-none focus:border-[#e84644]/50
                                focus:ring-1 focus:ring-[#e84644]/50 transition-all duration-300"
@@ -59,10 +104,8 @@ export default function Contact() {
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
                       type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
+                      name="from_email"
+                      required
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border border-[#e84644]/20 
                                text-gray-200 focus:outline-none focus:border-[#e84644]/50
                                focus:ring-1 focus:ring-[#e84644]/50 transition-all duration-300"
@@ -73,10 +116,8 @@ export default function Contact() {
                     <label className="text-sm text-gray-300">Message</label>
                     <motion.textarea
                       whileFocus={{ scale: 1.01 }}
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
+                      name="message"
+                      required
                       rows={4}
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border border-[#e84644]/20 
                                text-gray-200 focus:outline-none focus:border-[#e84644]/50
@@ -86,6 +127,21 @@ export default function Contact() {
                   </div>
                 </div>
 
+                {/* Status Message */}
+                {status.message && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`text-sm ${
+                      status.type === "success"
+                        ? "text-green-400"
+                        : "text-red-400"
+                    } text-center mb-4`}
+                  >
+                    {status.message}
+                  </motion.div>
+                )}
+
                 <div className="pt-4">
                   <motion.button
                     whileHover={{
@@ -94,14 +150,16 @@ export default function Contact() {
                     }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
+                    disabled={isLoading}
                     className="w-full relative inline-flex items-center justify-center p-0.5 overflow-hidden 
                              text-sm font-medium rounded-lg group bg-gradient-to-br from-[#e84644] to-[#ff8585] 
                              group-hover:from-[#e84644] group-hover:to-[#ff8585] hover:text-white 
                              focus:ring-4 focus:outline-none focus:ring-[#e84644]/30 
-                             shadow-[0_0_15px_rgba(232,70,68,0.3)]"
+                             shadow-[0_0_15px_rgba(232,70,68,0.3)]
+                             disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <span className="w-full px-5 py-3 transition-all ease-in duration-75 rounded-md group-hover:bg-transparent">
-                      Send Message
+                      {isLoading ? "Sending..." : "Send Message"}
                     </span>
                   </motion.button>
                 </div>
