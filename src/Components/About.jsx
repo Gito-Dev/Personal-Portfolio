@@ -192,7 +192,11 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="flex items-center gap-2 text-gray-400"
               >
-                <span>Learning Next.js</span>
+                <span>
+                  <span className="text-[#e84644] font-medium">5+</span>
+                  {" Years in  "}
+                  <span className="text-[#e84644] font-medium">IT</span>
+                </span>
               </motion.div>
             </div>
           </GradientBorder>

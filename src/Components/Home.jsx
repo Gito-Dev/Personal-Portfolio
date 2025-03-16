@@ -6,6 +6,7 @@ import About from "./About";
 import Divider from "./Divider";
 import ResumeOverlay from "./ResumeOverlay";
 import resumePDF from "../assets/Horgito Mhillaj CV.pdf";
+import Contact from "./Contact";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -43,7 +44,7 @@ export default function Home() {
       case "tab2":
         return <div>Projects Content</div>;
       case "tab3":
-        return <div>Contact Content</div>;
+        return <Contact />;
       default:
         return null;
     }
