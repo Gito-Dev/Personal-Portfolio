@@ -507,7 +507,9 @@ export default function MobileHome() {
           <span className="text-gray-400">Years with</span>
           <span className="text-[#e84644] font-medium">React</span>
         </div>
-        <span className="text-xs text-gray-400">Learning Next.js</span>
+        <span className="text-[#e84644] font-medium">+5</span>
+        <span className="text-gray-400">Years in </span>
+        <span className="text-[#e84644] font-medium">IT</span>
       </div>
 
       <Divider />
