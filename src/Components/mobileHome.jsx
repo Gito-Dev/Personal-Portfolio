@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FaGithub, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
 import Navbar from "./Navbar";
 import { motion, useInView } from "framer-motion";
@@ -11,6 +11,8 @@ import laptop from "../assets/laptop.svg";
 import web from "../assets/web.svg";
 import project from "../assets/project.svg";
 import seo from "../assets/seo.svg";
+import emailjs from "@emailjs/browser";
+import MobileFooter from "./mobileFooter";
 
 // Add this variant for hover animation
 const techButtonVariants = {
@@ -34,6 +36,45 @@ export default function MobileHome() {
   const isIntroInView = useInView(introRef, { once: true });
   const isTechInView = useInView(techStackRef, { once: true });
   const isContactInView = useInView(contactRef, { once: true });
+
+  // Add these state and ref for the contact form
+  const form = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
+
+  // Add handleSubmit function for the contact form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setStatus({ type: "", message: "" });
+
+    emailjs
+      .sendForm(
+        "service_w98fuua",
+        "template_qodhoey",
+        form.current,
+        "DFrx9uaTpXsVpN8wZ"
+      )
+      .then((result) => {
+        setStatus({
+          type: "success",
+          message: "Message sent successfully! ✨",
+        });
+        form.current.reset();
+        setTimeout(() => {
+          setStatus({ type: "", message: "" });
+        }, 3000);
+      })
+      .catch((error) => {
+        setStatus({
+          type: "error",
+          message: "Failed to send message. Please try again. 😕",
+        });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   return (
     <div className="flex flex-col p-4 space-y-6">
@@ -581,13 +622,13 @@ export default function MobileHome() {
 
       <Divider />
 
-      {/* Contact Section - Moved to bottom */}
+      {/* Contact Section */}
       <motion.div
         ref={contactRef}
         initial={{ opacity: 0, y: 50 }}
         animate={isContactInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col items-center space-y-4"
+        className="flex flex-col items-center space-y-6 w-full"
       >
         <motion.h2
           initial={{ x: -20, opacity: 0 }}
@@ -599,6 +640,86 @@ export default function MobileHome() {
         >
           Contact Me
         </motion.h2>
+
+        {/* Contact Form */}
+        <motion.form
+          ref={form}
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="w-full space-y-4 px-4"
+        >
+          <div className="space-y-4">
+            <motion.input
+              whileFocus={{ scale: 1.01 }}
+              type="text"
+              name="from_name"
+              required
+              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-[#e84644]/20 
+                       text-gray-200 focus:outline-none focus:border-[#e84644]/50
+                       focus:ring-1 focus:ring-[#e84644]/50 transition-all duration-300"
+              placeholder="Your name"
+            />
+
+            <motion.input
+              whileFocus={{ scale: 1.01 }}
+              type="email"
+              name="from_email"
+              required
+              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-[#e84644]/20 
+                       text-gray-200 focus:outline-none focus:border-[#e84644]/50
+                       focus:ring-1 focus:ring-[#e84644]/50 transition-all duration-300"
+              placeholder="your@email.com"
+            />
+
+            <motion.textarea
+              whileFocus={{ scale: 1.01 }}
+              name="message"
+              required
+              rows={4}
+              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-[#e84644]/20 
+                       text-gray-200 focus:outline-none focus:border-[#e84644]/50
+                       focus:ring-1 focus:ring-[#e84644]/50 transition-all duration-300 resize-none"
+              placeholder="Your message..."
+            />
+          </div>
+
+          {/* Status Message */}
+          {status.message && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`text-sm ${
+                status.type === "success" ? "text-green-400" : "text-red-400"
+              } text-center`}
+            >
+              {status.message}
+            </motion.div>
+          )}
+
+          <motion.button
+            whileHover={{
+              scale: 1.02,
+              boxShadow: "0 0 20px rgba(232,70,68,0.5)",
+            }}
+            whileTap={{ scale: 0.98 }}
+            type="submit"
+            disabled={isLoading}
+            className="w-full relative inline-flex items-center justify-center p-0.5 overflow-hidden 
+                     text-sm font-medium rounded-lg group bg-gradient-to-br from-[#e84644] to-[#ff8585] 
+                     group-hover:from-[#e84644] group-hover:to-[#ff8585] hover:text-white 
+                     focus:ring-4 focus:outline-none focus:ring-[#e84644]/30 
+                     shadow-[0_0_15px_rgba(232,70,68,0.3)]
+                     disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span className="w-full px-5 py-3 transition-all ease-in duration-75 rounded-md group-hover:bg-transparent">
+              {isLoading ? "Sending..." : "Send Message"}
+            </span>
+          </motion.button>
+        </motion.form>
+
+        {/* Contact Info */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -646,6 +767,9 @@ export default function MobileHome() {
       </motion.div>
 
       <Divider />
+
+      {/* Add the footer here */}
+      <MobileFooter />
     </div>
   );
 }
