@@ -47,6 +47,9 @@ export default function Contact() {
           message: "Message sent successfully! ✨",
         });
         form.current.reset();
+        setTimeout(() => {
+          setStatus({ type: "", message: "" });
+        }, 3000);
       })
       .catch((error) => {
         console.error("FAILED...", error.text);
@@ -57,12 +60,6 @@ export default function Contact() {
       })
       .finally(() => {
         setIsLoading(false);
-        // Clear success message after 5 seconds
-        if (status.type === "success") {
-          setTimeout(() => {
-            setStatus({ type: "", message: "" });
-          }, 5000);
-        }
       });
   };
 
@@ -77,7 +74,7 @@ export default function Contact() {
         >
           <GradientBorder className="h-full">
             <div className="flex flex-col h-full">
-              <h2 className="text-xl font-medium text-gray-200 mb-6">
+              <h2 className="text-xl font-medium text-gray-200 mb-4">
                 Get in Touch
               </h2>
               <form
@@ -127,22 +124,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Status Message */}
-                {status.message && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={`text-sm ${
-                      status.type === "success"
-                        ? "text-green-400"
-                        : "text-red-400"
-                    } text-center mb-4`}
-                  >
-                    {status.message}
-                  </motion.div>
-                )}
-
-                <div className="pt-4">
+                <div className="space-y-4">
                   <motion.button
                     whileHover={{
                       scale: 1.02,
@@ -162,6 +144,20 @@ export default function Contact() {
                       {isLoading ? "Sending..." : "Send Message"}
                     </span>
                   </motion.button>
+
+                  {status.message && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`text-sm ${
+                        status.type === "success"
+                          ? "text-green-400"
+                          : "text-red-400"
+                      } text-center`}
+                    >
+                      {status.message}
+                    </motion.div>
+                  )}
                 </div>
               </form>
             </div>
