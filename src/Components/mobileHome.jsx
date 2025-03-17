@@ -30,12 +30,14 @@ export default function MobileHome() {
   const introRef = useRef(null);
   const techStackRef = useRef(null);
   const contactRef = useRef(null);
+  const skillsRef = useRef(null);
 
   // Create isInView states for each section
   const isHeroInView = useInView(heroRef, { once: true });
   const isIntroInView = useInView(introRef, { once: true });
   const isTechInView = useInView(techStackRef, { once: true });
   const isContactInView = useInView(contactRef, { once: true });
+  const isSkillsInView = useInView(skillsRef, { once: true });
 
   // Add these state and ref for the contact form
   const form = useRef();
@@ -265,7 +267,9 @@ export default function MobileHome() {
           {/* Frontend */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={
+              isTechInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
             transition={{ duration: 0.5 }}
             className="space-y-2"
           >
@@ -277,12 +281,15 @@ export default function MobileHome() {
                 (tech, index) => (
                   <motion.span
                     key={tech}
-                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={
+                      isTechInView
+                        ? { opacity: 1, scale: 1 }
+                        : { opacity: 0, scale: 0.8 }
+                    }
                     transition={{
                       duration: 0.5,
                       delay: index * 0.1,
-                      ease: "easeOut",
                     }}
                     whileHover={{
                       scale: 1.1,
@@ -303,7 +310,9 @@ export default function MobileHome() {
           {/* Backend */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={
+              isTechInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
             transition={{ duration: 0.5, delay: 0.2 }}
             className="space-y-2"
           >
@@ -315,12 +324,15 @@ export default function MobileHome() {
                 (tech, index) => (
                   <motion.span
                     key={tech}
-                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={
+                      isTechInView
+                        ? { opacity: 1, scale: 1 }
+                        : { opacity: 0, scale: 0.8 }
+                    }
                     transition={{
                       duration: 0.5,
                       delay: 0.3 + index * 0.1,
-                      ease: "easeOut",
                     }}
                     whileHover={{
                       scale: 1.1,
@@ -341,7 +353,9 @@ export default function MobileHome() {
           {/* Tools & Libraries */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={
+              isTechInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
             transition={{ duration: 0.5, delay: 0.4 }}
             className="space-y-2"
           >
@@ -359,12 +373,15 @@ export default function MobileHome() {
               ].map((tech, index) => (
                 <motion.span
                   key={tech}
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={
+                    isTechInView
+                      ? { opacity: 1, scale: 1 }
+                      : { opacity: 0, scale: 0.8 }
+                  }
                   transition={{
                     duration: 0.5,
                     delay: 0.5 + index * 0.1,
-                    ease: "easeOut",
                   }}
                   whileHover={{
                     scale: 1.1,
@@ -388,14 +405,17 @@ export default function MobileHome() {
 
       {/* Skills & Services Section */}
       <motion.div
+        ref={skillsRef}
         initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={isSkillsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.5 }}
         className="space-y-4"
       >
         <motion.h2
           initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          animate={
+            isSkillsInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }
+          }
           transition={{ delay: 0.2 }}
           className="text-xl font-medium text-gray-200 text-center"
         >
@@ -405,7 +425,9 @@ export default function MobileHome() {
           {/* Frontend & Design */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={
+              isSkillsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
             transition={{ duration: 0.5 }}
             className="space-y-2"
           >
@@ -455,7 +477,9 @@ export default function MobileHome() {
           {/* Development & Management */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={
+              isSkillsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
             transition={{ duration: 0.5, delay: 0.2 }}
             className="space-y-2"
           >
@@ -542,15 +566,59 @@ export default function MobileHome() {
           </motion.p>
         </div>
 
-        {/* React Experience */}
-        <div className="flex items-center gap-1 text-sm mt-2">
-          <span className="text-[#e84644] font-medium">+2</span>
-          <span className="text-gray-400">Years with</span>
-          <span className="text-[#e84644] font-medium">React</span>
+        {/* Experience Years - Updated to match About style */}
+        <div className="flex flex-col items-center justify-center space-y-2">
+          <div className="flex items-center gap-2 text-gray-400">
+            <motion.span
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-[#e84644] font-medium"
+            >
+              +2
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-sm"
+            >
+              Years with
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              whileHover={{
+                scale: 1.1,
+                textShadow: "0 0 8px rgb(232,70,68)",
+              }}
+              className="text-[#e84644] font-semibold tracking-wide"
+              transition={{ duration: 0.3 }}
+            >
+              React
+            </motion.span>
+          </div>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="w-full h-px bg-gradient-to-r from-transparent via-[#e84644]/30 to-transparent"
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex items-center gap-2 text-gray-400"
+          >
+            <span>
+              <span className="text-[#e84644] font-medium">5+</span>
+              {" Years in "}
+              <span className="text-[#e84644] font-medium">IT</span>
+            </span>
+          </motion.div>
         </div>
-        <span className="text-[#e84644] font-medium">+5</span>
-        <span className="text-gray-400">Years in </span>
-        <span className="text-[#e84644] font-medium">IT</span>
       </div>
 
       <Divider />
@@ -576,48 +644,6 @@ export default function MobileHome() {
             className="w-full h-full [filter:drop-shadow(0_0_15px_rgba(232,70,68,0.6))]"
           />
         </motion.div>
-      </div>
-
-      <Divider />
-
-      {/* Open to Work Section */}
-      <div className="flex flex-col items-center space-y-3">
-        <div className="flex items-center gap-2">
-          <motion.span
-            animate={{
-              boxShadow: [
-                "0 0 0 0 rgba(40,200,64,0.4)",
-                "0 0 0 10px rgba(40,200,64,0)",
-              ],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="w-2 h-2 rounded-full bg-[#28c840]"
-          />
-          <h2 className="text-base font-medium bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent">
-            Open to Work
-          </h2>
-        </div>
-
-        <div className="flex gap-2">
-          <motion.span
-            whileHover={{ scale: 1.05 }}
-            className="px-3 py-1 text-xs rounded-full bg-white/5 border border-[#28c840]/20 text-gray-300 
-                      hover:bg-[#28c840]/5 transition-all duration-300"
-          >
-            Freelance
-          </motion.span>
-          <motion.span
-            whileHover={{ scale: 1.05 }}
-            className="px-3 py-1 text-xs rounded-full bg-white/5 border border-[#28c840]/20 text-gray-300 
-                      hover:bg-[#28c840]/5 transition-all duration-300"
-          >
-            Remote
-          </motion.span>
-        </div>
       </div>
 
       <Divider />
@@ -762,6 +788,46 @@ export default function MobileHome() {
             >
               <FaTiktok size={24} />
             </a>
+          </div>
+
+          {/* Open to Work Section */}
+          <div className="flex flex-col items-center space-y-3 pt-4">
+            <div className="flex items-center gap-2">
+              <motion.span
+                animate={{
+                  boxShadow: [
+                    "0 0 0 0 rgba(40,200,64,0.4)",
+                    "0 0 0 10px rgba(40,200,64,0)",
+                  ],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-2 h-2 rounded-full bg-[#28c840]"
+              />
+              <h2 className="text-base font-medium bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent">
+                Open to Work
+              </h2>
+            </div>
+
+            <div className="flex gap-2">
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                className="px-3 py-1 text-xs rounded-full bg-white/5 border border-[#28c840]/20 text-gray-300 
+                          hover:bg-[#28c840]/5 transition-all duration-300"
+              >
+                Freelance
+              </motion.span>
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                className="px-3 py-1 text-xs rounded-full bg-white/5 border border-[#28c840]/20 text-gray-300 
+                          hover:bg-[#28c840]/5 transition-all duration-300"
+              >
+                Remote
+              </motion.span>
+            </div>
           </div>
         </motion.div>
       </motion.div>
