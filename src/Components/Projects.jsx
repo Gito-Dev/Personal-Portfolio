@@ -27,15 +27,28 @@ const ProjectCard = ({ project }) => {
                 alt={project.title}
                 className="w-full h-full object-cover"
               />
-              {/* Gradient overlay - made darker and more prominent */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent h-48">
-                <div className="absolute bottom-0 left-0 right-0 p-4 space-y-2">
-                  <h3 className="text-lg font-semibold text-gray-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-shadow">
+              {/* Updated overlay with full coverage and better gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20">
+                <div className="absolute bottom-0 left-0 right-0 p-6 space-y-3">
+                  <h3 className="text-xl font-bold text-white">
                     {project.title}
                   </h3>
+                  <p className="text-sm text-gray-300 line-clamp-2">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {project.technologies.slice(0, 1).map((tech, index) => (
+                      <span
+                        key={index}
+                        className="px-2 py-0.5 bg-[#e84644]/20 text-[#e84644] rounded-full text-xs"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                   <div className="pt-2 w-full">
                     <button className="w-full px-4 py-2 bg-[#e84644] text-white rounded-lg hover:bg-[#e84644]/90 transition-all text-sm">
-                      Flip for Details
+                      View Details
                     </button>
                   </div>
                 </div>
@@ -120,13 +133,7 @@ export default function Projects() {
       description:
         "Developer utility suite featuring QR code generation, color palette tools, and more. Built with Vite and React for optimal performance.",
       image: fuzetools,
-      technologies: [
-        "React",
-        "Vite",
-        "TailwindCSS",
-        "JavaScript",
-        "API Integration",
-      ],
+      technologies: ["Tools App", "React", "Vite", "TailwindCSS", "JavaScript"],
       website: "https://fuzetools.vercel.app",
       github: "https://github.com/yourusername/fuzetools",
     },
